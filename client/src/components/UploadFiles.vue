@@ -19,9 +19,10 @@
 
     <button @click='test'>Test file</button> -->
     <div style="text-align: left"><a @click="downloadFile()" style="text-decoration: underline; cursor: pointer">Download file</a></div>
+    <br/>
     <input type='file' id='fileUpload' />
     <hr />
-    <input type='button' id='upload' @click='text()' value='Upload' />
+    <el-button size="small" type="success" @click="text()">Upload File&nbsp;<i class="el-icon-upload el-icon-right"></i></el-button>
     <hr />
     <div id='dvExcel'></div>
 
@@ -112,7 +113,6 @@ export default {
       for (var i = 0; i < lst.length; i++) {
         if (lst[i].s.indexOf('M.VKT') == -1) {
           delete lst[i]
-
         } else if (i <= 39) {
           a.push(lst[i])
         } else if (39 < i && i <= 71) {
@@ -127,7 +127,7 @@ export default {
       var de2 = []
       var de3 = []
       for (let k = 0; k < 3; k++) {
-        let de = [];
+        let de = []
         for (let i = 0; i < 8; i++) {
           if (i < 2) {
             let x = RandomX(d)
@@ -150,7 +150,7 @@ export default {
             a.splice(x, 1)
           }
         }
-        k == 0 ? de1 = de : k == 1 ? de2 = de : k == 2 ? de3 = de : console.log('het')
+        k === 0 ? de1 = de : k === 1 ? de2 = de : k === 2 ? de3 = de : console.log('het')
       }
       this.data.de1 = de1
       this.data.de2 = de2
@@ -166,7 +166,8 @@ export default {
       var fileUpload = $('#fileUpload')[0]
 
       // Validate whether File is valid Excel file.
-      var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/
+      // var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/
+
       // if (regex.test(fileUpload.value.toLowerCase())) {
       if (true) {
         if (typeof (FileReader) !== 'undefined') {
@@ -197,25 +198,12 @@ export default {
         alert('Please upload a valid Excel file.')
       }
     }
-    // test() {
-    //   AuthenticationService.hello({})
-    // },
-
-    // submitUpload() {
-    //   this.$refs.upload.submit()
-    // },
-
-    // uploadFileSuccess(response, file) {
-    //   if (!response) return console.error('Đã xảy ra lỗi trong quá trình tải file. Xin vui lòng tải lại !!!')
-    //   if (response.path) window.location = this.action + response.path
-    // },
-
-    // async clickMe() {
-    //   const response = await AuthenticationService.hello({
-    //     name: 'test'
-    //   })
-    //   console.log('line 52:', response)
-    // }
   }
 }
 </script>
+
+<style scoped>
+#upload-file {
+  padding: 20px
+}
+</style>

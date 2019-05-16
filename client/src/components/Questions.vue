@@ -1,9 +1,20 @@
 <template>
   <div class="question">
-    <h1 style="text-align: center">QUESTION</h1>
+    <el-row style="text-align: center; text-align: center; font-size: 20px; font-family: Times New Roman;">
+      <el-col :span="8">
+        <div><strong>TRƯỜNG CAO ĐẲNG CƠ ĐIỆN</strong></div>
+        <div><strong>VÀ XÂY DỰNG BẮC NINH</strong></div>
+      </el-col>
+      <el-col :span="8" :offset="8">
+        <div><strong>ĐỀ KIỂM TRA KẾT THÚC</strong></div>
+        <div><strong>MÔN HỌC (MÔ-ĐUN)</strong></div>
+      </el-col>
+    </el-row>
+    <br>
+    <span style="margin-right: 30px"><b>Môn: Vẽ kỹ thuật ngành may</b></span><span><b>Trình độ: </b>Trung cấp</span>
     <hr>
-    <el-tabs type="card" @tab-click="handleClick">
-      <el-tab-pane :label="`Đề ${index + 1}`" :name="key" v-for="(array, key, index) in data" :key="index + 1">
+    <el-tabs type="card" @tab-click="handleClick" :value="currentTab">
+      <el-tab-pane :label="langs[key]" :name="key" v-for="(array, key, index) in data" :key="index + 1">
         <div v-for="(item, index) in data[currentTab]" :key="index">
           <h2>Câu hỏi {{ index + 1 }}</h2>
           <p>{{ item.q }}</p>
@@ -42,7 +53,6 @@
 </template>
 
 <script>
-import AuthenticationService from '@/Services/AuthenticationService.js'
 export default {
   name: 'questions',
   props: {
@@ -53,9 +63,11 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      name: '',
-      message: '',
+      langs: {
+        'de1': 'Đề 1',
+        'de2': 'Đề 2',
+        'de3': 'Đề 3'
+      },
       currentTab: 'de1'
     }
   },
@@ -66,7 +78,7 @@ export default {
 
   methods: {
     handleClick (tab) {
-      this.currentTab = tab.name;
+      this.currentTab = tab.name
     }
   }
 }

@@ -18,7 +18,7 @@ module.exports = {
     let fileUrl = `${dirname}\\${folderName}\\${fileName}`
     res.sendFile(fileUrl)
 
-    // File path.
+    // // File path.
     // readXlsxFile(fileUrl).then((rows) => {
     //   // `rows` is an array of rows
     //   // each row being an array of cells.
