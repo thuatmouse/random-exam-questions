@@ -42,6 +42,7 @@ export default {
   data() {
     return {
       action: `${window.location.protocol}//${window.location.hostname}:8081/getFile/`,
+      baseUrl: `${window.location.protocol}//${window.location.hostname}:8081/getFile/`,
       currentView: '',
       data: {
         de1: [],
@@ -53,7 +54,7 @@ export default {
 
   methods: {
     downloadFile () {
-      window.location = 'http://localhost:8081/getFile/storage/default.xlsx'
+      window.location = this.action +  'storage/default.xlsx'
     },
     ProcessExcel (data) {
       // Read the Excel File data.
